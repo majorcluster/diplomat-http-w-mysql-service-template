@@ -1,0 +1,5 @@
+{
+ {{namespace}}.ports.sql.core/db-type      "h2:mem"
+ {{namespace}}.ports.sql.core/db-name      "{{namespace}}"
+ {{namespace}}.configs/env                 "test"
+ }

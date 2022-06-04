@@ -1,0 +1,9 @@
+{
+ {{namespace}}.ports.sql.core/db-type    "mysql"
+ {{namespace}}.ports.sql.core/host       "0.0.0.0"
+ {{namespace}}.ports.sql.core/port       "3306"
+ {{namespace}}.ports.sql.core/db-name    "{{namespace}}"
+ {{namespace}}.ports.sql.core/username   "root"
+ {{namespace}}.ports.sql.core/password   "secret"
+ {{namespace}}.configs/env               "dev"
+ }
