@@ -8,6 +8,7 @@
 
                            [io.pedestal/pedestal.jetty "0.5.10"]
                            [org.clojars.majorcluster/pedestal-api-helper "0.4.1"]
+                           [org.clojars.majorcluster/clj-data-adapter "0.1.0"]
                            [org.clojure/data.json "0.2.6"]
                            [org.clojure/java.jdbc "0.7.12"]
                            [mysql/mysql-connector-java "8.0.29"]

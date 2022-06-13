@@ -1,6 +1,6 @@
 (ns {{namespace}}.controllers.breads
   (:require [{{namespace}}.ports.sql.repositories.breads :as repo.breads]
-            [{{namespace}}.adapters.key-replacer :as k-rep]))
+            [clj-data-adapter.core :as d-a]))
 (defn print-n-continue
   [msg]
   (println msg)
@@ -9,13 +9,13 @@
 (defn get-all
   []
   (->> (repo.breads/find-all)
-       (k-rep/transform-keys k-rep/snake-key-to-kebab-key)))
+       (d-a/transform-keys d-a/snake-key->kebab-key)))
 
 (defn get-by-id
   [id]
   (->> (repo.breads/find-by-id id)
        (first)
-       (k-rep/transform-keys k-rep/snake-key-to-kebab-key)))
+       (d-a/transform-keys d-a/snake-key->kebab-key)))
 
 (defn extract-generated-id
   [result]
@@ -24,14 +24,14 @@
 
 (defn post
   [m]
-  (-> (k-rep/transform-keys k-rep/kebab-key-to-snake-str m)
+  (-> (d-a/transform-keys d-a/kebab-key->snake-str m)
       (repo.breads/insert!)
       (first)
       (extract-generated-id)))
 
 (defn patch
   [m id]
-  (->  (k-rep/transform-keys k-rep/kebab-key-to-snake-str m)
+  (->  (d-a/transform-keys d-a/kebab-key->snake-str m)
        (dissoc m :id)
        (repo.breads/update! id))
   m)
