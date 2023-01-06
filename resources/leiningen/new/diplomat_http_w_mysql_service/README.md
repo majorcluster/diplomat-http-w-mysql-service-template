@@ -4,14 +4,23 @@ FIXME
 
 ## Getting Started
 
-1. Start the application: `lein with-profile dev run`
-2. Start the application with migration: `lein with-profile dev run --migrate`
-3. Start dev server: `lein run-dev-w-migration` or `lein run-dev`
-4. Go to [localhost:8080](http://localhost:8080/breads) to see a nice list of breads in json!
-5. Read your app's source code at src/{{namespace}}/service.clj. Explore the docs of functions
-   that define routes and responses.
-6. Run your app's tests with `lein test`.
-7. Learn more! See the [Links section below](#links).
+:exclamation: Change usernames and passwords for PROD or internet-facing environments!
+
+1. Start mysql `docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret -d mysql:latest`
+2. `$ docker exec -it mysql bash`
+3. `$ mysql --user=root --password=secret`
+4. <pre>CREATE DATABASE `{{namespace}}`;</pre>"
+5. <pre>CREATE USER '{{namespace}}'@'%' IDENTIFIED BY 'password';</pre>
+6. <pre>GRANT ALL PRIVILEGES on `{{namespace}}`.* TO '{{namespace}}'@'%' WITH GRANT OPTION;</pre>
+7. <pre>FLUSH PRIVILEGES;</pre>
+8. Start the application: `lein with-profile dev run`
+9. Start the application with migration: `lein with-profile dev run --migrate`
+10. Start dev server: `lein run-dev-w-migration` or `lein run-dev`
+11. Go to [localhost:8080](http://localhost:8080/breads) to see a nice list of breads in json!
+12. Read your app's source code at src/{{namespace}}/service.clj. Explore the docs of functions
+    that define routes and responses.
+13. Run your app's tests with `lein test`.
+14. Learn more! See the [Links section below](#links).
 
 
 ## Configuration

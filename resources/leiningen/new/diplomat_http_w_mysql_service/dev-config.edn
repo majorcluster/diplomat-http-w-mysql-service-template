@@ -3,7 +3,7 @@
  {{namespace}}.ports.sql.core/host       "0.0.0.0"
  {{namespace}}.ports.sql.core/port       "3306"
  {{namespace}}.ports.sql.core/db-name    "{{namespace}}"
- {{namespace}}.ports.sql.core/username   "root"
- {{namespace}}.ports.sql.core/password   "secret"
+ {{namespace}}.ports.sql.core/username   "{{namespace}}"
+ {{namespace}}.ports.sql.core/password   "password"
  {{namespace}}.configs/env               "dev"
  }
