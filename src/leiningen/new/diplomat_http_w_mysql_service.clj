@@ -19,6 +19,7 @@
                   ["resources/test-config.edn" (render "test-config.edn" data)]
                   ["src/{{sanitized}}/server.clj" (render "server.clj" data)]
                   ["src/{{sanitized}}/configs.clj" (render "configs.clj" data)]
+                  ["src/{{sanitized}}/adapters/breads.clj" (render "adapters_breads.clj" data)]
                   ["src/{{sanitized}}/controllers/breads.clj" (render "controllers_breads.clj" data)]
                   ["src/{{sanitized}}/ports/http/routes/breads.clj" (render "http_routes_breads.clj" data)]
                   ["test/{{sanitized}}/ports/http/routes/breads_integration_test.clj" (render "breads_integration_test.clj" data)]

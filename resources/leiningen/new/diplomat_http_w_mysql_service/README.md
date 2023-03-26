@@ -22,6 +22,13 @@ FIXME
 13. Run your app's tests with `lein test`.
 14. Learn more! See the [Links section below](#links).
 
+## Migrations
+They are located at `resources/migrations`.   
+Must be named in number sequenced order.   
+Run with: `$ lein run migrate`
+
+## Tests
+`lein test`
 
 ## Configuration
 

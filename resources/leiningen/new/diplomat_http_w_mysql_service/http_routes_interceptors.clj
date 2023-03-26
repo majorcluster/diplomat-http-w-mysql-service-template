@@ -12,5 +12,5 @@
    :leave (fn [context]
             (->> (:response context)
                  :body
-                 (convert-to-json)
+                 convert-to-json
                  (assoc-in context [:response :body])))})

@@ -20,8 +20,6 @@
   (println "\nCreating your server...")
   (let [migrate? (->> args
                       (filter #(= "--migrate" %))
-                      (first)
-                      (boolean))
-        log (println "migrate?" migrate?)]
+                      first
+                      boolean)]
     (ports.c/start-ports migrate?)))
-

@@ -41,8 +41,8 @@
 (defn migrate
   []
   (let [files (->> (io/resource "migrations")
-                   (io/file)
-                   (file-seq)
+                   io/file
+                   file-seq
                    (filter #(re-matches #"^[1-9]{1,}.sql$" (.getName %))))]
     (jdbc/with-db-transaction
       [t-con connection]

@@ -1,21 +1,13 @@
 (ns {{namespace}}.controllers.breads
-  (:require [{{namespace}}.ports.sql.repositories.breads :as repo.breads]
-            [clj-data-adapter.core :as d-a]))
-(defn print-n-continue
-  [msg]
-  (println msg)
-  msg)
+  (:require [{{namespace}}.ports.sql.repositories.breads :as repo.breads]))
 
 (defn get-all
   []
-  (->> (repo.breads/find-all)
-       (d-a/transform-keys d-a/snake-key->kebab-key)))
+  (repo.breads/find-all))
 
 (defn get-by-id
   [id]
-  (->> (repo.breads/find-by-id id)
-       (first)
-       (d-a/transform-keys d-a/snake-key->kebab-key)))
+  (repo.breads/find-by-id id))
 
 (defn extract-generated-id
   [result]
@@ -24,18 +16,18 @@
 
 (defn post
   [m]
-  (-> (d-a/transform-keys d-a/kebab-key->snake-str m)
-      (repo.breads/insert!)
-      (first)
-      (extract-generated-id)))
+  (-> m
+      repo.breads/insert!
+      first
+      extract-generated-id))
 
 (defn patch
   [m id]
-  (->  (d-a/transform-keys d-a/kebab-key->snake-str m)
+  (->  m
        (dissoc m :id)
        (repo.breads/update! id))
-  m)
+  id)
 
 (defn delete-by-id
   [id]
-  (print-n-continue (repo.breads/delete-by-id! id)))
+  (repo.breads/delete-by-id! id))

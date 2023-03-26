@@ -8,7 +8,9 @@
 
 (defn find-by-id
   [entity id]
-  (jdbc/query sql.c/connection [(format "select * from %s where id = ?" entity) id]))
+  (-> sql.c/connection
+      (jdbc/query [(format "select * from %s where id = ?" entity) id])
+      first))
 
 (defn insert!
   [entity m]
@@ -21,4 +23,3 @@
 (defn delete-by-id!
   [entity id]
   (jdbc/delete! sql.c/connection entity ["id = ?" id]))
-
